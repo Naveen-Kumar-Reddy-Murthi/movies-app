@@ -33,7 +33,7 @@ const AppProvider = ({ children }) => {
       }
     }
     movieDetails.data['cast'] = movieCredits.data.cast.splice(0,5);
-    movieDetails.data['crew'] = movieCredits.data.crew.splice(0,5);
+    movieDetails.data['crew'] = movieCredits.data.crew.splice(0,10);
     setSelectedMovie(movieDetails.data);
     setShowModal(true);
   }

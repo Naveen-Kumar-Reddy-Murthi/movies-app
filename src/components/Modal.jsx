@@ -9,7 +9,7 @@ const Modal = () => {
         vote_count : voteCount, poster_path : posterImage, genres, cast, crew} = selectedMovie;
  let formattedDate;
 
-  const key = 'name';
+  const key = 'job';
 
 const uniqueCrew = [...new Map(crew.map(item =>
   [item[key], item])).values()];
@@ -41,9 +41,12 @@ console.log(uniqueCrew);
           <div className="flexbox-container">
             {cast.map((cas) => 
           <article key={cas.id} className="single-cast">
+            <header>
+             <h5 className='text-small'>{cas.name} </h5>
+            </header>
           <img src={IMAGE_URL + cas.profile_path} className="img1"/>
           <footer>
-            <h5 className='text-small'>{cas.name}</h5>
+            <h5 className='text-small'> {'As '+cas.character}</h5>
           </footer>
         </article>
                      ) }</div>
@@ -52,9 +55,12 @@ console.log(uniqueCrew);
           <div className="flexbox-container">
             {uniqueCrew.map((cre) => 
           <article key={cre.id} className="single-cast">
+            <header>
+             <h5 className='text-small'>{cre.name} </h5>
+            </header>
           <img src={IMAGE_URL + cre.profile_path} className="img1"/>
           <footer>
-            <h5 className='text-small'>{cre.name}</h5>
+            <h5 className='text-small'>{cre.job}</h5>
           </footer>
         </article>
                      ) }</div>
