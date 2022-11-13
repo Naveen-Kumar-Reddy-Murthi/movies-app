@@ -14,12 +14,12 @@ const AppProvider = ({ children }) => {
   const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
-  const [adultFilter, setAdultFilter] = useState(false)
+  const [adultFilter, setAdultFilter] = useState(true)
   const [otherSearch, setOtherSearch] = useState('')
 
   const [selectedMovie, setSelectedMovie] = useState(null)
   const [showModal, setShowModal] = useState(false)
-  const adultWords = ['PENIS', 'BLOWJOB', 'ANUS', 'DICK', 'VAGINA', 'BOOBS', 'ANAL', 'SEX', 'PORN', 'INTERCOURSE', 'ORAL SEX', 'BLOW JOB', 'HANDJOB', 'HAND JOB'];
+  const adultWords = ['PENIS', 'BLOWJOB', 'ANUS', 'DICK', 'CUNT', 'BOOB', 'FELLATIO', 'ORAL', 'BOOBS', 'VAGINA', 'BOOBS', 'ANAL', 'SEX', 'PORN', 'INTERCOURSE', 'ORAL SEX', 'BLOW JOB', 'BLOWJOB', 'HANDJOB', 'HAND JOB', 'CUM', 'CUMSHOT', 'CUM SHOT', 'BOSOM'];
   const selectMovie = async (id) => {
   let movieDetails;
   let movieCredits;
@@ -49,10 +49,8 @@ const AppProvider = ({ children }) => {
       if (data.results) {
         if(adultFilter){
           const arr = data.results;
-          console.log('adultfilter before filter '+arr)
           // const filtered = arr.filter(item => !adultWords.includes(item.title))
-          const filtered = arr.filter(item => !adultWords.some(prohb => item.title.toUpperCase().includes(prohb))) 
-          console.log(filtered)
+          const filtered = arr.filter(item => !adultWords.some(prohb => item.title.toUpperCase().includes(prohb) || item.overview.toUpperCase().includes(prohb))) 
           setMovies(filtered)
         }else{
         setMovies(data.results)

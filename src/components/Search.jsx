@@ -4,7 +4,7 @@ import { Badge, Switch } from 'evergreen-ui'
 const Search = () => {
   const { setSearchTerm, setOtherSearch, setAdultFilter } = useGlobalContext();
   const [text, setText] = useState('')
-  const [filter, setFilter] = useState(false)
+  const [filter, setFilter] = useState(true)
   const handleChange = (e) => {
     setText(e.target.value)
   }
