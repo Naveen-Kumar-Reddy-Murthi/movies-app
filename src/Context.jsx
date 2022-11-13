@@ -18,8 +18,8 @@ const AppProvider = ({ children }) => {
   const [otherSearch, setOtherSearch] = useState('')
 
   const [selectedMovie, setSelectedMovie] = useState(null)
-    const [showModal, setShowModal] = useState(false)
-
+  const [showModal, setShowModal] = useState(false)
+  const adultWords = ['PENIS', 'BLOWJOB', 'ANUS', 'DICK', 'VAGINA', 'BOOBS', 'ANAL', 'SEX', 'PORN', 'INTERCOURSE', 'ORAL SEX', 'BLOW JOB', 'HANDJOB', 'HAND JOB'];
   const selectMovie = async (id) => {
   let movieDetails;
   let movieCredits;
@@ -47,8 +47,16 @@ const AppProvider = ({ children }) => {
     try {
       const { data } = await axios.get(url+'&include_adult='+adultFilter)
       if (data.results) {
-        console.log(data.results)
+        if(adultFilter){
+          const arr = data.results;
+          console.log('adultfilter before filter '+arr)
+          // const filtered = arr.filter(item => !adultWords.includes(item.title))
+          const filtered = arr.filter(item => !adultWords.some(prohb => item.title.toUpperCase().includes(prohb))) 
+          console.log(filtered)
+          setMovies(filtered)
+        }else{
         setMovies(data.results)
+          }
       } else {
         setMovies([])
       }
