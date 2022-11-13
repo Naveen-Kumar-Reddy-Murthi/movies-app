@@ -19,7 +19,7 @@ const AppProvider = ({ children }) => {
 
   const [selectedMovie, setSelectedMovie] = useState(null)
   const [showModal, setShowModal] = useState(false)
-  const adultWords = ['PENIS', 'BLOWJOB', 'ANUS', 'DICK', 'CUNT', 'BOOB', 'FELLATIO', 'ORAL', 'BOOBS', 'VAGINA', 'BOOBS', 'ANAL', 'SEX', 'PORN', 'INTERCOURSE', 'ORAL SEX', 'BLOW JOB', 'BLOWJOB', 'HANDJOB', 'HAND JOB', 'CUM', 'CUMSHOT', 'CUM SHOT', 'BOSOM'];
+  const adultWords = ['PENIS', 'BLOWJOB', 'ANUS', 'DICK', 'CUNT', 'BOOB', 'FELLATIO', 'ORAL', 'BOOBS', 'VAGINA', 'BOOBS', 'ANAL', 'SEX', 'PORN', 'INTERCOURSE', 'ORAL SEX', 'BLOW JOB', 'BLOWJOB', 'HANDJOB', 'HAND JOB', 'CUM', 'CUMSHOT', 'CUM SHOT', 'BOSOM', 'BLOW JOBS', 'PROFELLA', 'VAGINAL'];
   const selectMovie = async (id) => {
   let movieDetails;
   let movieCredits;
