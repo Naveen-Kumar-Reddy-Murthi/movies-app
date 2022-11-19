@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useGlobalContext } from '../Context.jsx'
-import { Badge, Switch } from 'evergreen-ui'
+import { Badge, Switch, Tooltip , InfoSignIcon } from 'evergreen-ui'
 const Search = () => {
   const { setSearchTerm, setOtherSearch, setAdultFilter } = useGlobalContext();
   const [text, setText] = useState('')
@@ -27,12 +27,15 @@ const Search = () => {
 
   return <header className='search-container'>
     <form onSubmit={handleSubmit}>
-     <label>
+    
         <div className="flexbox-container">
-       <Badge color="blue" >Adult Filter</Badge>
-       <Switch style={{ marginLeft: '1rem', align: 'center' }} height={24} checked={filter} onChange={() => setFilter(!filter)} />
+       <Tooltip content="Turn on to filter out PG13 movies">
+         <InfoSignIcon color="blue"/>
+       </Tooltip>
           </div>
-      </label>
+       <Switch  height={16} checked={filter} onChange={() => setFilter(!filter)} />
+          
+     
       <input type='text' onChange={handleChange} value={text} placeholder='search a movie'
         className='form-input' />
       <button type="submit" className='btn'>Search</button>

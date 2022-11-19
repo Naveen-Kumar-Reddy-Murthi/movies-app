@@ -19,7 +19,7 @@ const AppProvider = ({ children }) => {
 
   const [selectedMovie, setSelectedMovie] = useState(null)
   const [showModal, setShowModal] = useState(false)
-  const adultWords = ['PENIS', 'BLOWJOB', 'ANUS', 'DICK', 'CUNT', 'BOOB', 'FELLATIO', 'ORAL', 'BOOBS', 'VAGINA', 'BOOBS', 'ANAL', 'SEX', 'PORN', 'INTERCOURSE', 'ORAL SEX', 'BLOW JOB', 'BLOWJOB', 'HANDJOB', 'HAND JOB', 'CUM', 'CUMSHOT', 'CUM SHOT', 'BOSOM', 'BLOW JOBS', 'PROFELLA', 'VAGINAL'];
+  const adultWords = ['PENIS', 'BLOWJOB', 'ANUS', 'DICK', 'CUNT', 'BOOB', 'FELLATIO', 'ORAL', 'BOOBS', 'VAGINA', 'BOOBS', 'ANAL', 'SEX', 'PORN', 'INTERCOURSE', 'ORAL SEX', 'BLOW JOB', 'BLOWJOB', 'HANDJOB', 'HAND JOB', 'CUM', 'CUMSHOT', 'CUM SHOT', 'BOSOM', 'BLOW JOBS', 'PROFELLA', 'VAGINAL', 'GANGBANG', 'HORNY', 'GIRL SCENES', 'LESBIAN', 'GAY', 'BISEXUAL'];
   const selectMovie = async (id) => {
   let movieDetails;
   let movieCredits;
@@ -46,7 +46,9 @@ const AppProvider = ({ children }) => {
     setLoading(true)
     try {
       const { data } = await axios.get(url+'&include_adult='+adultFilter)
+      
       if (data.results) {
+        console.log('movies == '+data.results);
         if(adultFilter){
           const arr = data.results;
           // const filtered = arr.filter(item => !adultWords.includes(item.title))
@@ -58,6 +60,7 @@ const AppProvider = ({ children }) => {
       } else {
         setMovies([])
       }
+    
     } catch (error) {
       console.log(error)
     }
